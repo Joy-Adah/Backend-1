@@ -8,9 +8,9 @@ const port = process.env.PORT || 5000;
 
 app.get('/api', (req, res) => {
   // Get parameters from the request
-  const slackName = req.query.slack_name;
+  const slackName = req.query.slack_name ?? 'Joy Adah';
 
-  const track = req.query.track;
+  const track = req.query.track ?? 'backend';
 
   // Get current day of the week
   const daysOfWeek = [
@@ -42,7 +42,7 @@ app.get('/api', (req, res) => {
     slack_name: slackName,
     current_day: currentDay,
     utc_time: currentDate,
-    track: track,
+    track: track.toLowerCase(),
     github_repo_url: githubRepoUrl,
     github_file_url: githubFileUrl,
     status_code: 200,
